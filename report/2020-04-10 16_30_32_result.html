@@ -1,0 +1,1159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>接口自动构建测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>接口自动构建测试报告</h1>
+<p class='attribute'><strong>Start Time:</strong> 2020-04-10 16:30:32</p>
+<p class='attribute'><strong>Duration:</strong> 0:00:03.045000</p>
+<p class='attribute'><strong>Status:</strong> Pass 19 Failure 2 Error 7</p>
+
+<p class='description'>测试结果如下</p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test testcase</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_0_app_common.MyTestSuite</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',2)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_app_common__2___get_module_unread____app通用___2_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        pass</a>
+
+    <div id='div_pt1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_app_common__3___emoji_package____app通用___3_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.2')" >
+        pass</a>
+
+    <div id='div_pt1.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_1_uesr_login.MyTestSuite</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c2',2)">Detail</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_login__1___第三方登陆____登录___1_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.1')" >
+        pass</a>
+
+    <div id='div_pt2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_login__4___用户信息_______4_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.2')" >
+        pass</a>
+
+    <div id='div_pt2.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>test_2_homepage.MyTestSuite</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c3',1)">Detail</a></td>
+</tr>
+
+<tr id='ft3.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_homepage__1___首页feed流推荐数据____首页___1_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.1')" >
+        fail</a>
+
+    <div id='div_ft3.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.1: Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_2_homepage.py", line 76, in test_homepage
+    if assert_that(response.text).contains(except_data[i]).is_true():
+  File "D:\python\python\lib\site-packages\assertpy\assertpy.py", line 266, in contains
+    self._err('Expected &lt;%s&gt; to contain item &lt;%s&gt;, but did not.' % (self.val, items[0]))
+  File "D:\python\python\lib\site-packages\assertpy\assertpy.py", line 1112, in _err
+    raise AssertionError(out)
+AssertionError: Expected &lt;{"code":0,"msg":"请求成功","data":{"list":[{"obj_id":"19098614","title":"【画师选】画师ryota的作品 ​​​​ ​​​​","content":"画师ryota的作品 ​​​​ http://www.pixiv.net/member.php?id=990017 碰到喜欢的画师可以直接搜画师名关注。 ​​​​ 百度acg·17发现画师 &amp;nb …","like_num":2932,"has_like":0,"tags":"","author_id":49,"type":"9","title_image":"http://qns.lemondream.cn/lemon_comics_ac/image/a7cabc30gy1fkit3vqukoj20jg0zmk50.jpg","width":700,"height":1282,"lemon_num":0,"rec_package_id":""},{"obj_id":"1910622","title":"へらぶな","content":null,"like_num":2317,"has_like":0,"tags":"","author_id":7,"type":"9","title_image":"http://qns.lemondream.cn/lemon_image/image/007iocwWgy1fym29iz637j30nm0u8n7b.jpg","width":850,"height":1088,"lemon_num":0,"rec_package_id":""},{"obj_id":"19065745","title":"被日本评价第一最可爱的中国初音未来","content":"【中國コスプレ少女一番可愛いです】服がとても綺麗ですd(^_^o)❤️初音未来China：歳纳鱼蛋Miku暗示：投喂给小姐姐吧 #初音ミク #初音未来 #Cosplay","like_num":1079,"has_like":0,"tags":"","author_id":58,"type":"9","title_image":"http://qns.lemondream.cn/cos/images/CPBPEVCUIBUKCIJK.jpg","width":2109,"height":2996,"lemon_num":0,"rec_package_id":""},{"obj_id":"19101637","title":"全世界期待已久的新作！《復仇者聯盟：終局之戰》插畫特輯","content":null,"like_num":1007,"has_like":0,"tags":"","author_id":64,"type":"9","title_image":"http://qns.lemondream.cn/lemon_image/image/007iocwWly1g2wa99mzq6j30lc0u7tay.jpg","width":768,"height":1087,"lemon_num":0,"rec_package_id":""},{"obj_id":"190642311","title":"老攻白飞飞","content":"今天是七夕强势表白老攻还有啊八周年快乐❤❤❤❤","like_num":2245,"has_like":0,"tags":"","author_id":78,"type":"9","title_image":"http://qns.lemondream.cn/cos/images/OAjRaGY1f27cfolI.jpg","width":720,"height":1552,"lemon_num":0,"rec_package_id":""},{"obj_id":"190618836","title":"玛修cos","content":null,"like_num":2960,"has_like":0,"tags":"","author_id":63,"type":"9","title_image":"http://qns.lemondream.cn/starstar_cos/images/MTU1NTY4NzAxMjg4NjQ4MzAzMiM1MjAjaW1hZ2U=","width":1536,"height":2048,"lemon_num":0,"rec_package_id":""},{"obj_id":"19101828","title":"（ID：187240）","content":null,"like_num":2207,"has_like":0,"tags":"","author_id":61,"type":"9","title_image":"http://qns.lemondream.cn/lemon_image/image/006DgsQsly1ft6atgz9jmj30m80ikna4.jpg","width":800,"height":668,"lemon_num":0,"rec_package_id":""},{"obj_id":"19067176","title":"来猜猜姐姐我手上的红包里是什么吧~","content":"来猜猜姐姐我手上的红包里是什么吧~ido30漫展返图 第五弹出镜/米九摄影/鬼泣","like_num":1926,"has_like":0,"tags":"","author_id":63,"type":"9","title_image":"http://qns.lemondream.cn/cos/images/o2fXkd3wd4O2JGBA.jpg","width":1048,"height":1398,"lemon_num":0,"rec_package_id":""},{"obj_id":"19096815","title":"基情的花式滑冰 冰上的尤里 手机壁纸","content":null,"like_num":604,"has_like":0,"tags":"","author_id":70,"type":"9","title_image":"http://qns.lemondream.cn/lemon_comics_wallpaper/image/21-16110612155E16.jpg","width":471,"height":375,"lemon_num":0,"rec_package_id":""},{"obj_id":"19097414","title":"美图推荐——虎牙特辑","content":"之前看到有评论留言说想要看虎牙特辑，今天小编就满足你下你们~有虎牙的妹子感觉很调皮很可爱也很性感有没有！","like_num":770,"has_like":0,"tags":"","author_id":41,"type":"9","title_image":"http://qns.lemondream.cn/lemon_comics_post/image/row_57514791a7387.jpg","width":360,"height":225,"lemon_num":0,"rec_package_id":""},{"obj_id":"1579048299004883","title":null,"content":"大概想天天了","like_num":980,"has_like":0,"tags":"","author_id":28,"type":"9","title_image":"http://qns.lemondream.cn/lemon_image/cover/093c65089b.jpg","width":650,"height":620,"lemon_num":0,"rec_package_id":""},{"obj_id":"1578964535004774","title":null,"content":"【cos正片】洛基潮服","like_num":2743,"has_like":0,"tags":"","author_id":41,"type":"9","title_image":"http://qns.lemondream.cn/lemon_image/cover/1ff7901ea9.jpg","width":1250,"height":10000,"lemon_num":0,"rec_package_id":""},{"obj_id":"1579060231004559","title":null,"content":"为什么相册的图都没了??????","like_num":1300,"has_like":0,"tags":"","author_id":18,"type":"9","title_image":"http://qns.lemondream.cn/lemon_image/cover/9671eb1b25.jpg","width":843,"height":1498,"lemon_num":0,"rec_package_id":""},{"obj_id":"19097093","title":"【画师】韩国画师ソゴム / 裕珍的插画作品","content":"韩国画师ソゴム / 裕珍的插画作品 昵称：ソゴム / 裕珍 UID：17648188 https://www.pixiv.net/member.php?id=17648188 喜欢这位画师的作品就去P …","like_num":1881,"has_like":0,"tags":"","author_id":44,"type":"9","title_image":"http://qns.lemondream.cn/lemon_comics_ac/image/006yt1Omgy1g0edxjeaq4j30u00l8ay6.jpg","width":1080,"height":764,"lemon_num":0,"rec_package_id":""},{"obj_id":"19065028","title":"【cos】穹妹体操服","content":"我永远喜欢春日野穹！","like_num":2774,"has_like":0,"tags":"","author_id":37,"type":"9","title_image":"http://qns.lemondream.cn/cos/images/GDPIVYCFBQEEIKWH.jpg","width":3494,"height":2330,"lemon_num":0,"rec_package_id":""},{"obj_id":"19101292","title":"買些什麼好呢？市場特輯","content":null,"like_num":2546,"has_like":0,"tags":"","author_id":31,"type":"9","title_image":"http://qns.lemondream.cn/lemon_image/image/007iocwWly1g2302bgyu9j30lc0eqaca.jpg","width":768,"height":530,"lemon_num":0,"rec_package_id":""},{"obj_id":"19103071","title":"馬卡龍特輯 – 請享用吧♡","content":null,"like_num":2399,"has_like":0,"tags":"","author_id":78,"type":"9","title_image":"http://qns.lemondream.cn/lemon_image/image/007WJpLrly1g6me53h0ykj30bo0k375i.jpg","width":420,"height":723,"lemon_num":0,"rec_package_id":""},{"obj_id":"1578400657004356","title":null,"content":"这个绿谷好帅♡","like_num":762,"has_like":0,"tags":"","author_id":47,"type":"9","title_image":"http://qns.lemondream.cn/lemon_image/cover/20b001e72a.jpg","width":1079,"height":851,"lemon_num":0,"rec_package_id":""},{"obj_id":"190650682","title":"满满的狂三傲娇饭","content":"小姐姐傲娇了时崎狂三cn:筱奕","like_num":2669,"has_like":0,"tags":"","author_id":3,"type":"9","title_image":"http://qns.lemondream.cn/cos/images/QHO8SpUAEKQNV5ZQ.jpg","width":650,"height":975,"lemon_num":0,"rec_package_id":""},{"obj_id":"1910132747","title":"【JOJO系列】所有主角的欧拉欧拉合集","content":"JOJO的奇妙冒险","like_num":2438,"has_like":0,"tags":"","author_id":96,"type":"10","title_image":"http://qnv.lemondream.cn/lemon_image/cover/6fe72f09f4.jpg","width":246,"height":138,"video_url":"http://qnv.lemondream.cn/lemon_video/video/vDkQqDf8Lmo.mp4","lemon_num":0,"rec_package_id":""}],"act_id":20157,"tag_show_info":{"show_tag_type":2}}}&gt; to contain item &lt;"msg":"请求成功1"&gt;, but did not.
+Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_2_homepage.py", line 76, in test_homepage
+    if assert_that(response.text).contains(except_data[i]).is_true():
+  File "D:\python\python\lib\site-packages\assertpy\assertpy.py", line 266, in contains
+    self._err('Expected &lt;%s&gt; to contain item &lt;%s&gt;, but did not.' % (self.val, items[0]))
+  File "D:\python\python\lib\site-packages\assertpy\assertpy.py", line 1112, in _err
+    raise AssertionError(out)
+AssertionError: Expected &lt;{"code":0,"msg":"请求成功","data":{"list":[{"obj_id":"19098614","title":"【画师选】画师ryota的作品 ​​​​ ​​​​","content":"画师ryota的作品 ​​​​ http://www.pixiv.net/member.php?id=990017 碰到喜欢的画师可以直接搜画师名关注。 ​​​​ 百度acg·17发现画师 &amp;nb …","like_num":2932,"has_like":0,"tags":"","author_id":49,"type":"9","title_image":"http://qns.lemondream.cn/lemon_comics_ac/image/a7cabc30gy1fkit3vqukoj20jg0zmk50.jpg","width":700,"height":1282,"lemon_num":0,"rec_package_id":""},{"obj_id":"1910622","title":"へらぶな","content":null,"like_num":2317,"has_like":0,"tags":"","author_id":7,"type":"9","title_image":"http://qns.lemondream.cn/lemon_image/image/007iocwWgy1fym29iz637j30nm0u8n7b.jpg","width":850,"height":1088,"lemon_num":0,"rec_package_id":""},{"obj_id":"19065745","title":"被日本评价第一最可爱的中国初音未来","content":"【中國コスプレ少女一番可愛いです】服がとても綺麗ですd(^_^o)❤️初音未来China：歳纳鱼蛋Miku暗示：投喂给小姐姐吧 #初音ミク #初音未来 #Cosplay","like_num":1079,"has_like":0,"tags":"","author_id":58,"type":"9","title_image":"http://qns.lemondream.cn/cos/images/CPBPEVCUIBUKCIJK.jpg","width":2109,"height":2996,"lemon_num":0,"rec_package_id":""},{"obj_id":"19101637","title":"全世界期待已久的新作！《復仇者聯盟：終局之戰》插畫特輯","content":null,"like_num":1007,"has_like":0,"tags":"","author_id":64,"type":"9","title_image":"http://qns.lemondream.cn/lemon_image/image/007iocwWly1g2wa99mzq6j30lc0u7tay.jpg","width":768,"height":1087,"lemon_num":0,"rec_package_id":""},{"obj_id":"190642311","title":"老攻白飞飞","content":"今天是七夕强势表白老攻还有啊八周年快乐❤❤❤❤","like_num":2245,"has_like":0,"tags":"","author_id":78,"type":"9","title_image":"http://qns.lemondream.cn/cos/images/OAjRaGY1f27cfolI.jpg","width":720,"height":1552,"lemon_num":0,"rec_package_id":""},{"obj_id":"190618836","title":"玛修cos","content":null,"like_num":2960,"has_like":0,"tags":"","author_id":63,"type":"9","title_image":"http://qns.lemondream.cn/starstar_cos/images/MTU1NTY4NzAxMjg4NjQ4MzAzMiM1MjAjaW1hZ2U=","width":1536,"height":2048,"lemon_num":0,"rec_package_id":""},{"obj_id":"19101828","title":"（ID：187240）","content":null,"like_num":2207,"has_like":0,"tags":"","author_id":61,"type":"9","title_image":"http://qns.lemondream.cn/lemon_image/image/006DgsQsly1ft6atgz9jmj30m80ikna4.jpg","width":800,"height":668,"lemon_num":0,"rec_package_id":""},{"obj_id":"19067176","title":"来猜猜姐姐我手上的红包里是什么吧~","content":"来猜猜姐姐我手上的红包里是什么吧~ido30漫展返图 第五弹出镜/米九摄影/鬼泣","like_num":1926,"has_like":0,"tags":"","author_id":63,"type":"9","title_image":"http://qns.lemondream.cn/cos/images/o2fXkd3wd4O2JGBA.jpg","width":1048,"height":1398,"lemon_num":0,"rec_package_id":""},{"obj_id":"19096815","title":"基情的花式滑冰 冰上的尤里 手机壁纸","content":null,"like_num":604,"has_like":0,"tags":"","author_id":70,"type":"9","title_image":"http://qns.lemondream.cn/lemon_comics_wallpaper/image/21-16110612155E16.jpg","width":471,"height":375,"lemon_num":0,"rec_package_id":""},{"obj_id":"19097414","title":"美图推荐——虎牙特辑","content":"之前看到有评论留言说想要看虎牙特辑，今天小编就满足你下你们~有虎牙的妹子感觉很调皮很可爱也很性感有没有！","like_num":770,"has_like":0,"tags":"","author_id":41,"type":"9","title_image":"http://qns.lemondream.cn/lemon_comics_post/image/row_57514791a7387.jpg","width":360,"height":225,"lemon_num":0,"rec_package_id":""},{"obj_id":"1579048299004883","title":null,"content":"大概想天天了","like_num":980,"has_like":0,"tags":"","author_id":28,"type":"9","title_image":"http://qns.lemondream.cn/lemon_image/cover/093c65089b.jpg","width":650,"height":620,"lemon_num":0,"rec_package_id":""},{"obj_id":"1578964535004774","title":null,"content":"【cos正片】洛基潮服","like_num":2743,"has_like":0,"tags":"","author_id":41,"type":"9","title_image":"http://qns.lemondream.cn/lemon_image/cover/1ff7901ea9.jpg","width":1250,"height":10000,"lemon_num":0,"rec_package_id":""},{"obj_id":"1579060231004559","title":null,"content":"为什么相册的图都没了??????","like_num":1300,"has_like":0,"tags":"","author_id":18,"type":"9","title_image":"http://qns.lemondream.cn/lemon_image/cover/9671eb1b25.jpg","width":843,"height":1498,"lemon_num":0,"rec_package_id":""},{"obj_id":"19097093","title":"【画师】韩国画师ソゴム / 裕珍的插画作品","content":"韩国画师ソゴム / 裕珍的插画作品 昵称：ソゴム / 裕珍 UID：17648188 https://www.pixiv.net/member.php?id=17648188 喜欢这位画师的作品就去P …","like_num":1881,"has_like":0,"tags":"","author_id":44,"type":"9","title_image":"http://qns.lemondream.cn/lemon_comics_ac/image/006yt1Omgy1g0edxjeaq4j30u00l8ay6.jpg","width":1080,"height":764,"lemon_num":0,"rec_package_id":""},{"obj_id":"19065028","title":"【cos】穹妹体操服","content":"我永远喜欢春日野穹！","like_num":2774,"has_like":0,"tags":"","author_id":37,"type":"9","title_image":"http://qns.lemondream.cn/cos/images/GDPIVYCFBQEEIKWH.jpg","width":3494,"height":2330,"lemon_num":0,"rec_package_id":""},{"obj_id":"19101292","title":"買些什麼好呢？市場特輯","content":null,"like_num":2546,"has_like":0,"tags":"","author_id":31,"type":"9","title_image":"http://qns.lemondream.cn/lemon_image/image/007iocwWly1g2302bgyu9j30lc0eqaca.jpg","width":768,"height":530,"lemon_num":0,"rec_package_id":""},{"obj_id":"19103071","title":"馬卡龍特輯 – 請享用吧♡","content":null,"like_num":2399,"has_like":0,"tags":"","author_id":78,"type":"9","title_image":"http://qns.lemondream.cn/lemon_image/image/007WJpLrly1g6me53h0ykj30bo0k375i.jpg","width":420,"height":723,"lemon_num":0,"rec_package_id":""},{"obj_id":"1578400657004356","title":null,"content":"这个绿谷好帅♡","like_num":762,"has_like":0,"tags":"","author_id":47,"type":"9","title_image":"http://qns.lemondream.cn/lemon_image/cover/20b001e72a.jpg","width":1079,"height":851,"lemon_num":0,"rec_package_id":""},{"obj_id":"190650682","title":"满满的狂三傲娇饭","content":"小姐姐傲娇了时崎狂三cn:筱奕","like_num":2669,"has_like":0,"tags":"","author_id":3,"type":"9","title_image":"http://qns.lemondream.cn/cos/images/QHO8SpUAEKQNV5ZQ.jpg","width":650,"height":975,"lemon_num":0,"rec_package_id":""},{"obj_id":"1910132747","title":"【JOJO系列】所有主角的欧拉欧拉合集","content":"JOJO的奇妙冒险","like_num":2438,"has_like":0,"tags":"","author_id":96,"type":"10","title_image":"http://qnv.lemondream.cn/lemon_image/cover/6fe72f09f4.jpg","width":246,"height":138,"video_url":"http://qnv.lemondream.cn/lemon_video/video/vDkQqDf8Lmo.mp4","lemon_num":0,"rec_package_id":""}],"act_id":20157,"tag_show_info":{"show_tag_type":2}}}&gt; to contain item &lt;"msg":"请求成功1"&gt;, but did not.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_3_uesr_homepage.MyTestSuite</td>
+    <td>6</td>
+    <td>6</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c4',6)">Detail</a></td>
+</tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_homepage__1___主页详情____个人空间页___1_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.1')" >
+        pass</a>
+
+    <div id='div_pt4.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_homepage__2___已发布的作品列表____个人空间页___2_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.2')" >
+        pass</a>
+
+    <div id='div_pt4.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_homepage__3___砸柠檬列表____个人空间页___3_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.3')" >
+        pass</a>
+
+    <div id='div_pt4.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_homepage__4___用户资源____个人空间页___4_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.4')" >
+        pass</a>
+
+    <div id='div_pt4.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_homepage__5___banner____个人空间页___5_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.5')" >
+        pass</a>
+
+    <div id='div_pt4.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_homepage__6___意见反馈____APP反馈___6_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.6')" >
+        pass</a>
+
+    <div id='div_pt4.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.6: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>test_4_invite_friend.MyTestSuite</td>
+    <td>4</td>
+    <td>3</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c5',4)">Detail</a></td>
+</tr>
+
+<tr id='ft5.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_invite_friend__2___我的邀请详情____邀请好友注册___2_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.1')" >
+        fail</a>
+
+    <div id='div_ft5.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.1: Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_4_invite_friend.py", line 66, in test_invite_friend
+    assert_that(response.text).contains(except_data[i])
+  File "D:\python\python\lib\site-packages\assertpy\assertpy.py", line 266, in contains
+    self._err('Expected &lt;%s&gt; to contain item &lt;%s&gt;, but did not.' % (self.val, items[0]))
+  File "D:\python\python\lib\site-packages\assertpy\assertpy.py", line 1112, in _err
+    raise AssertionError(out)
+AssertionError: Expected &lt;{"code":0,"msg":"请求成功","data":{"user_info":{"user_id":1060,"nickname":"嗯啦","avatar":"http://thirdqq.qlogo.cn/g?b=oidb&amp;k=BHAOAdJS9Dz1A2Ep9u077A&amp;s=100&amp;t=1522303015","showid":"ag1060","avatar_type":2},"invite_reg_info":{"invite_code":"09ZZMR","reward_info":{"copper":22193,"invite_num":50},"popup_window":null,"share_token":"MTA2MA=="},"has_invite":1,"be_invite_info":{"user_info":{"user_id":1010,"nickname":"66sk哦哦哦哦哦","avatar":"http://psb1lisd3.bkt.clouddn.com/user/1010/avatar/1562299015136.jpg","showid":"ab1010"},"reward_info":{"copper":7}}}}&gt; to contain item &lt;"user_id":1042&gt;, but did not.
+Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_4_invite_friend.py", line 66, in test_invite_friend
+    assert_that(response.text).contains(except_data[i])
+  File "D:\python\python\lib\site-packages\assertpy\assertpy.py", line 266, in contains
+    self._err('Expected &lt;%s&gt; to contain item &lt;%s&gt;, but did not.' % (self.val, items[0]))
+  File "D:\python\python\lib\site-packages\assertpy\assertpy.py", line 1112, in _err
+    raise AssertionError(out)
+AssertionError: Expected &lt;{"code":0,"msg":"请求成功","data":{"user_info":{"user_id":1060,"nickname":"嗯啦","avatar":"http://thirdqq.qlogo.cn/g?b=oidb&amp;k=BHAOAdJS9Dz1A2Ep9u077A&amp;s=100&amp;t=1522303015","showid":"ag1060","avatar_type":2},"invite_reg_info":{"invite_code":"09ZZMR","reward_info":{"copper":22193,"invite_num":50},"popup_window":null,"share_token":"MTA2MA=="},"has_invite":1,"be_invite_info":{"user_info":{"user_id":1010,"nickname":"66sk哦哦哦哦哦","avatar":"http://psb1lisd3.bkt.clouddn.com/user/1010/avatar/1562299015136.jpg","showid":"ab1010"},"reward_info":{"copper":7}}}}&gt; to contain item &lt;"user_id":1042&gt;, but did not.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt5.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_invite_friend__3___战绩记录列表____邀请好友注册___3_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.2')" >
+        pass</a>
+
+    <div id='div_pt5.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt5.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_invite_friend__4___填写邀请码____邀请好友注册___4_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.3')" >
+        pass</a>
+
+    <div id='div_pt5.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt5.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_invite_friend__5___获取邀请码用户的信息____邀请好友注册___5_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.4')" >
+        pass</a>
+
+    <div id='div_pt5.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_5_livebroadcas.MyTestSuite</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c6',3)">Detail</a></td>
+</tr>
+
+<tr id='pt6.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_livebroadcas__1___创建视频直播间____直播___2_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.1')" >
+        pass</a>
+
+    <div id='div_pt6.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt6.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt6.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt6.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_livebroadcas__2___创建直播间组____直播___3_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.2')" >
+        pass</a>
+
+    <div id='div_pt6.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt6.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt6.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt6.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_livebroadcas__3___获取直播间信息____直播___4_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.3')" >
+        pass</a>
+
+    <div id='div_pt6.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt6.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt6.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_6_create.MyTestSuite</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c7',2)">Detail</a></td>
+</tr>
+
+<tr id='pt7.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_create__1___配音tab____内容创作___1_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.1')" >
+        pass</a>
+
+    <div id='div_pt7.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt7.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt7.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt7.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_create__2___配音模板____内容创作___2_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.2')" >
+        pass</a>
+
+    <div id='div_pt7.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt7.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt7.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>test_7_comic.MyTestSuite</td>
+    <td>4</td>
+    <td>1</td>
+    <td>0</td>
+    <td>3</td>
+    <td><a href="javascript:showClassDetail('c8',4)">Detail</a></td>
+</tr>
+
+<tr id='ft8.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_comic__1___漫画详情页____漫画___1_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.1')" >
+        error</a>
+
+    <div id='div_ft8.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.1: Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_7_comic.py", line 39, in test_comic
+    comic_id = file_operation.read_file('comic_id.json')  # 请求的body需要comic_id
+  File "E:\python\testcase\base\file_operation.py", line 10, in read_file
+    with open(config_path + filename, 'r') as load_f:
+FileNotFoundError: [Errno 2] No such file or directory: 'E:\\python\\testcase\\data\\comic_id.json'
+Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_7_comic.py", line 39, in test_comic
+    comic_id = file_operation.read_file('comic_id.json')  # 请求的body需要comic_id
+  File "E:\python\testcase\base\file_operation.py", line 10, in read_file
+    with open(config_path + filename, 'r') as load_f:
+FileNotFoundError: [Errno 2] No such file or directory: 'E:\\python\\testcase\\data\\comic_id.json'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_comic__2___漫画评论____漫画___2_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.2')" >
+        error</a>
+
+    <div id='div_ft8.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.2: Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_7_comic.py", line 39, in test_comic
+    comic_id = file_operation.read_file('comic_id.json')  # 请求的body需要comic_id
+  File "E:\python\testcase\base\file_operation.py", line 10, in read_file
+    with open(config_path + filename, 'r') as load_f:
+FileNotFoundError: [Errno 2] No such file or directory: 'E:\\python\\testcase\\data\\comic_id.json'
+Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_7_comic.py", line 39, in test_comic
+    comic_id = file_operation.read_file('comic_id.json')  # 请求的body需要comic_id
+  File "E:\python\testcase\base\file_operation.py", line 10, in read_file
+    with open(config_path + filename, 'r') as load_f:
+FileNotFoundError: [Errno 2] No such file or directory: 'E:\\python\\testcase\\data\\comic_id.json'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt8.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_comic__3___快速评论词____漫画___3_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt8.3')" >
+        pass</a>
+
+    <div id='div_pt8.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt8.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt8.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.4' class='none'>
+    <td class='errorCase'><div class='testcase'>test_comic__4___相关推荐____漫画___4_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.4')" >
+        error</a>
+
+    <div id='div_ft8.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.4: Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_7_comic.py", line 39, in test_comic
+    comic_id = file_operation.read_file('comic_id.json')  # 请求的body需要comic_id
+  File "E:\python\testcase\base\file_operation.py", line 10, in read_file
+    with open(config_path + filename, 'r') as load_f:
+FileNotFoundError: [Errno 2] No such file or directory: 'E:\\python\\testcase\\data\\comic_id.json'
+Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_7_comic.py", line 39, in test_comic
+    comic_id = file_operation.read_file('comic_id.json')  # 请求的body需要comic_id
+  File "E:\python\testcase\base\file_operation.py", line 10, in read_file
+    with open(config_path + filename, 'r') as load_f:
+FileNotFoundError: [Errno 2] No such file or directory: 'E:\\python\\testcase\\data\\comic_id.json'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>test_8_adventure.MyTestSuite</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td>3</td>
+    <td><a href="javascript:showClassDetail('c9',3)">Detail</a></td>
+</tr>
+
+<tr id='ft9.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_adventure__1___漫剧详情页____漫剧___1_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft9.1')" >
+        error</a>
+
+    <div id='div_ft9.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft9.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft9.1: Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_8_adventure.py", line 40, in test_adventure
+    adventure_id = file_operation.read_file('adventure_id.json')  # 请求的body需要comic_id
+  File "E:\python\testcase\base\file_operation.py", line 10, in read_file
+    with open(config_path + filename, 'r') as load_f:
+FileNotFoundError: [Errno 2] No such file or directory: 'E:\\python\\testcase\\data\\adventure_id.json'
+Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_8_adventure.py", line 40, in test_adventure
+    adventure_id = file_operation.read_file('adventure_id.json')  # 请求的body需要comic_id
+  File "E:\python\testcase\base\file_operation.py", line 10, in read_file
+    with open(config_path + filename, 'r') as load_f:
+FileNotFoundError: [Errno 2] No such file or directory: 'E:\\python\\testcase\\data\\adventure_id.json'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft9.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_adventure__2___漫剧评论____漫剧___2_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft9.2')" >
+        error</a>
+
+    <div id='div_ft9.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft9.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft9.2: Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_8_adventure.py", line 40, in test_adventure
+    adventure_id = file_operation.read_file('adventure_id.json')  # 请求的body需要comic_id
+  File "E:\python\testcase\base\file_operation.py", line 10, in read_file
+    with open(config_path + filename, 'r') as load_f:
+FileNotFoundError: [Errno 2] No such file or directory: 'E:\\python\\testcase\\data\\adventure_id.json'
+Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_8_adventure.py", line 40, in test_adventure
+    adventure_id = file_operation.read_file('adventure_id.json')  # 请求的body需要comic_id
+  File "E:\python\testcase\base\file_operation.py", line 10, in read_file
+    with open(config_path + filename, 'r') as load_f:
+FileNotFoundError: [Errno 2] No such file or directory: 'E:\\python\\testcase\\data\\adventure_id.json'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft9.3' class='none'>
+    <td class='errorCase'><div class='testcase'>test_adventure__3___相关推荐____漫剧___3_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft9.3')" >
+        error</a>
+
+    <div id='div_ft9.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft9.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft9.3: Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_8_adventure.py", line 40, in test_adventure
+    adventure_id = file_operation.read_file('adventure_id.json')  # 请求的body需要comic_id
+  File "E:\python\testcase\base\file_operation.py", line 10, in read_file
+    with open(config_path + filename, 'r') as load_f:
+FileNotFoundError: [Errno 2] No such file or directory: 'E:\\python\\testcase\\data\\adventure_id.json'
+Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_8_adventure.py", line 40, in test_adventure
+    adventure_id = file_operation.read_file('adventure_id.json')  # 请求的body需要comic_id
+  File "E:\python\testcase\base\file_operation.py", line 10, in read_file
+    with open(config_path + filename, 'r') as load_f:
+FileNotFoundError: [Errno 2] No such file or directory: 'E:\\python\\testcase\\data\\adventure_id.json'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>unittest.loader._FailedTest</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c10',1)">Detail</a></td>
+</tr>
+
+<tr id='ft10.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_9_external</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft10.1')" >
+        error</a>
+
+    <div id='div_ft10.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft10.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft10.1: ImportError: Failed to import test module: test_9_external
+Traceback (most recent call last):
+  File "D:\python\python\lib\unittest\loader.py", line 434, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "D:\python\python\lib\unittest\loader.py", line 375, in _get_module_from_name
+    __import__(name)
+  File "E:\python\testcase\testcase\test_9_external.py", line 11, in &lt;module&gt;
+    class MyTestSuite(unittest.TestCase):
+  File "E:\python\testcase\testcase\test_9_external.py", line 24, in MyTestSuite
+    cases_id.append(int(datas.get_case_id(i)))
+ValueError: invalid literal for int() with base 10: ''
+
+ImportError: Failed to import test module: test_9_external
+Traceback (most recent call last):
+  File "D:\python\python\lib\unittest\loader.py", line 434, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "D:\python\python\lib\unittest\loader.py", line 375, in _get_module_from_name
+    __import__(name)
+  File "E:\python\testcase\testcase\test_9_external.py", line 11, in &lt;module&gt;
+    class MyTestSuite(unittest.TestCase):
+  File "E:\python\testcase\testcase\test_9_external.py", line 24, in MyTestSuite
+    cases_id.append(int(datas.get_case_id(i)))
+ValueError: invalid literal for int() with base 10: ''
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>28</td>
+    <td>19</td>
+    <td>2</td>
+    <td>7</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>

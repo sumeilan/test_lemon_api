@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>接口自动构建测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>接口自动构建测试报告</h1>
+<p class='attribute'><strong>Start Time:</strong> 2020-04-13 15:37:33</p>
+<p class='attribute'><strong>Duration:</strong> 0:00:28.124000</p>
+<p class='attribute'><strong>Status:</strong> Pass 32 Error 9</p>
+
+<p class='description'>测试结果如下</p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test testcase</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_0_app_common.MyTestSuite</td>
+    <td>4</td>
+    <td>4</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',4)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_app_common__1___install____app通用___1_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_app_common__2___get_module_unread____app通用___2_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_app_common__3___emoji_package____app通用___3_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_app_common__4___get_home_page_alert____app通用___4_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_1_homepage.MyTestSuite</td>
+    <td>6</td>
+    <td>6</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c2',6)">Detail</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_homepage__1___首页feed流推荐数据____首页___1_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_homepage__2___首页分类tab____首页___2_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_homepage__3___ABtest____首页___3_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_homepage__4___推荐tab内容第一页____首页___4_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_homepage__5___推荐tab内容第二页____首页___5_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_homepage__6___首页banner____首页___6_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_2_uesr_login.MyTestSuite</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c3',3)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_login__1___第三方登陆____注册登录___1_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_login__4___用户信息____注册登录___4_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_login__5___sync____注册登录___5_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_3_uesr_homepage.MyTestSuite</td>
+    <td>10</td>
+    <td>10</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c4',10)">Detail</a></td>
+</tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_homepage__10___用户彩钻收支记录____个人空间___10_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_homepage__1___主页详情____个人空间___1_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_homepage__2___已发布的作品列表____个人空间___2_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_homepage__3___砸柠檬列表____个人空间___3_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_homepage__4___banner____个人空间___4_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_homepage__5___意见反馈____个人空间___5_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_homepage__6___用户资源____个人空间___6_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_homepage__7___充值资源商品列表____个人空间___7_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_homepage__8___用户青柠收支记录____个人空间___8_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_homepage__9___用户金条收支记录____个人空间___9_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_4_release_content.MyTestSuite</td>
+    <td>9</td>
+    <td>9</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c5',9)">Detail</a></td>
+</tr>
+
+<tr id='pt5.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_release_content__1___配音tab____内容创作___1_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt5.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_release_content__2___配音模板____内容创作___2_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt5.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_release_content__3___背景音乐列表____内容创作___3_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt5.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_release_content__4___发布原创图片____内容创作___4_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt5.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_release_content__5___发布原创视频____内容创作___5_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt5.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_release_content__6___用户发布内容详情____内容创作___6_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.6')" >
+        pass</a>
+
+    <div id='div_pt5.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.6: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt5.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_release_content__7___评论用户发布的内容____内容创作___7_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.7')" >
+        pass</a>
+
+    <div id='div_pt5.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.7: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt5.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_release_content__8___用户发布的作品评论列表____内容创作___8_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.8')" >
+        pass</a>
+
+    <div id='div_pt5.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.8: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt5.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_release_content__9___删除用户发布的内容____内容创作___9_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.9')" >
+        pass</a>
+
+    <div id='div_pt5.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.9: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>test_x_invite_friend.MyTestSuite</td>
+    <td>9</td>
+    <td>0</td>
+    <td>0</td>
+    <td>9</td>
+    <td><a href="javascript:showClassDetail('c6',9)">Detail</a></td>
+</tr>
+
+<tr id='ft6.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_invite_friend__1___配音tab____内容创作___1_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.1')" >
+        error</a>
+
+    <div id='div_ft6.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.1: Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_x_invite_friend.py", line 45, in test_invite_friend
+    headers = eval(MyTestSuite.datas.get_request_headers(index))
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+NameError: name 'versionCode' is not defined
+Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_x_invite_friend.py", line 45, in test_invite_friend
+    headers = eval(MyTestSuite.datas.get_request_headers(index))
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+NameError: name 'versionCode' is not defined
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_invite_friend__2___配音模板____内容创作___2_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.2')" >
+        error</a>
+
+    <div id='div_ft6.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.2: Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_x_invite_friend.py", line 45, in test_invite_friend
+    headers = eval(MyTestSuite.datas.get_request_headers(index))
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+NameError: name 'versionCode' is not defined
+Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_x_invite_friend.py", line 45, in test_invite_friend
+    headers = eval(MyTestSuite.datas.get_request_headers(index))
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+NameError: name 'versionCode' is not defined
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.3' class='none'>
+    <td class='errorCase'><div class='testcase'>test_invite_friend__3___背景音乐列表____内容创作___3_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.3')" >
+        error</a>
+
+    <div id='div_ft6.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.3: Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_x_invite_friend.py", line 45, in test_invite_friend
+    headers = eval(MyTestSuite.datas.get_request_headers(index))
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+NameError: name 'versionCode' is not defined
+Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_x_invite_friend.py", line 45, in test_invite_friend
+    headers = eval(MyTestSuite.datas.get_request_headers(index))
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+NameError: name 'versionCode' is not defined
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.4' class='none'>
+    <td class='errorCase'><div class='testcase'>test_invite_friend__4___发布原创图片____内容创作___4_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.4')" >
+        error</a>
+
+    <div id='div_ft6.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.4: Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_x_invite_friend.py", line 42, in test_invite_friend
+    body = eval(MyTestSuite.datas.get_request_parameter(index))
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+NameError: name 'timestamp' is not defined
+Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_x_invite_friend.py", line 42, in test_invite_friend
+    body = eval(MyTestSuite.datas.get_request_parameter(index))
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+NameError: name 'timestamp' is not defined
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.5' class='none'>
+    <td class='errorCase'><div class='testcase'>test_invite_friend__5___发布原创视频____内容创作___5_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.5')" >
+        error</a>
+
+    <div id='div_ft6.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.5: Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_x_invite_friend.py", line 42, in test_invite_friend
+    body = eval(MyTestSuite.datas.get_request_parameter(index))
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+NameError: name 'timestamp' is not defined
+Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_x_invite_friend.py", line 42, in test_invite_friend
+    body = eval(MyTestSuite.datas.get_request_parameter(index))
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+NameError: name 'timestamp' is not defined
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.6' class='none'>
+    <td class='errorCase'><div class='testcase'>test_invite_friend__6___用户发布内容详情____内容创作___6_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.6')" >
+        error</a>
+
+    <div id='div_ft6.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.6: Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_x_invite_friend.py", line 42, in test_invite_friend
+    body = eval(MyTestSuite.datas.get_request_parameter(index))
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+NameError: name 'release_id' is not defined
+Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_x_invite_friend.py", line 42, in test_invite_friend
+    body = eval(MyTestSuite.datas.get_request_parameter(index))
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+NameError: name 'release_id' is not defined
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.7' class='none'>
+    <td class='errorCase'><div class='testcase'>test_invite_friend__7___评论用户发布的内容____内容创作___7_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.7')" >
+        error</a>
+
+    <div id='div_ft6.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.7: Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_x_invite_friend.py", line 42, in test_invite_friend
+    body = eval(MyTestSuite.datas.get_request_parameter(index))
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+NameError: name 'token' is not defined
+Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_x_invite_friend.py", line 42, in test_invite_friend
+    body = eval(MyTestSuite.datas.get_request_parameter(index))
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+NameError: name 'token' is not defined
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.8' class='none'>
+    <td class='errorCase'><div class='testcase'>test_invite_friend__8___用户发布的作品评论列表____内容创作___8_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.8')" >
+        error</a>
+
+    <div id='div_ft6.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.8: Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_x_invite_friend.py", line 42, in test_invite_friend
+    body = eval(MyTestSuite.datas.get_request_parameter(index))
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+NameError: name 'release_id' is not defined
+Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_x_invite_friend.py", line 42, in test_invite_friend
+    body = eval(MyTestSuite.datas.get_request_parameter(index))
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+NameError: name 'release_id' is not defined
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.9' class='none'>
+    <td class='errorCase'><div class='testcase'>test_invite_friend__9___删除用户发布的内容____内容创作___9_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.9')" >
+        error</a>
+
+    <div id='div_ft6.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.9: Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_x_invite_friend.py", line 42, in test_invite_friend
+    body = eval(MyTestSuite.datas.get_request_parameter(index))
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+NameError: name 'release_id' is not defined
+Traceback (most recent call last):
+  File "D:\python\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\python\testcase\testcase\test_x_invite_friend.py", line 42, in test_invite_friend
+    body = eval(MyTestSuite.datas.get_request_parameter(index))
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+NameError: name 'release_id' is not defined
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>41</td>
+    <td>32</td>
+    <td>0</td>
+    <td>9</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>
